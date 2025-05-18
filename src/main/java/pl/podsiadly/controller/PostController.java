@@ -26,8 +26,11 @@ public class PostController {
 
     @GetMapping("{id}")
     @Operation(summary = "getPostById")
-    public Post getPostById(@PathVariable BigInteger id) {
-        throw new IllegalArgumentException("Not Implementet yet getPostById: " + id);
+    public Post getPostById(@PathVariable long id) {
+
+        return postService.getPostById(id).orElseThrow(() -> {
+            throw new IllegalArgumentException("Not found id : "+ id);
+        });
     }
 
     @PostMapping

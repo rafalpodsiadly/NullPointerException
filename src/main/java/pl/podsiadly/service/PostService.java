@@ -6,6 +6,7 @@ import pl.podsiadly.model.Post;
 import pl.podsiadly.repository.PostRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -15,5 +16,10 @@ public class PostService {
 
     public List<Post> getAllPosts() {
         return postRepository.findAll();
+    }
+
+    public Optional<Post> getPostById(long id) {
+        return postRepository.findById(id);
+
     }
 }
